@@ -13,7 +13,15 @@ class FrontendController extends Controller
 
 
     function about() {
+
         return view('frontend.about');
     }
+
+
+    function categoryArchive($slug) {
+        dd($slug);
+    }
+
+
 
 }

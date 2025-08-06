@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ env('APP_NAME') }} - @yield('title', " All in one place")</title>
-    <meta name="title" content="{{ env('APP_NAME') }}@yield('title', "- All in one place") ">
-    <meta name="description" content="Online Shopping in Bangladesh: Order Now from Eco Bazar">
+    <meta name="title" content="{{ env('APP_NAME') }}@yield('title', " - All in one place") ">
+    <meta name=" description" content="Online Shopping in Bangladesh: Order Now from Eco Bazar">
     <meta name="name" content="Rafikul Islam">
     <link rel="shortcut icon" href="./img/Fav-icon.png')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
@@ -68,7 +68,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-8 headerLogo order-1">
-                        <a href="./index.html" class="img-fluid"><img src="{{ asset('frontend/img/Logo .png')}}"
+                        <a href="{{ url('/') }}" class="img-fluid"><img src="{{ asset('frontend/img/Logo .png')}}"
                                 alt="LOGO"></a>
                     </div>
                     <div class="col-lg-6 headerSearch order-3 order-lg-2 my-3 my-lg-0">
@@ -133,23 +133,14 @@
                                 </a>
 
                                 <ul class="categorySubmenu">
-                                    <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/896/896530.png"
+                                    @foreach ($categories as $category)
+
+                                    <li>
+                                        <a href="{{ route('frontend.category.archeive', $category->slug) }}"><img src="{{ asset('storage/'. $category->icon) }}"
                                                 alt="">
-                                            Electronics</a></li>
-                                    <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/5564/5564823.png"
-                                                alt="">
-                                            Furniture</a></li>
-                                    <li><a href="#"> <img src="https://cdn-icons-png.flaticon.com/512/3050/3050198.png"
-                                                alt="">Fashion</a>
-                                    </li>
-                                    <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3081/3081993.png"
-                                                alt="">Toys</a>
-                                    </li>
-                                    <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/6456/6456651.png"
-                                                alt="">Shoes</a>
-                                    </li>
-                                    <li><a href="#"> <img src="https://cdn-icons-png.flaticon.com/512/3728/3728783.png"
-                                                alt="">Festival</a></li>
+                                            {{ $category->category_title }}</a></li>
+                                    @endforeach
+
                                 </ul>
                             </li>
                             <li><a href="./index.html" class="active">Home</a></li>
